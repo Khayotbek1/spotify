@@ -7,8 +7,13 @@ class SingerSerializer(ModelSerializer):
         model = Singer
         fields = '__all__'
 
+class SingerNameSerializer(ModelSerializer):
+    class Meta:
+        model = Singer
+        fields = 'name'
+
 class AlbumSafeSerializer(ModelSerializer):
-    singer = SingerSerializer(read_only=True)
+    singer = SingerNameSerializer(read_only=True)
     class Meta:
         model = Album
         fields = '__all__'
